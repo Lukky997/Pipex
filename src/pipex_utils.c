@@ -6,7 +6,7 @@
 /*   By: lgoras < lgoras@student.42.fr >            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 14:05:02 by lgoras            #+#    #+#             */
-/*   Updated: 2025/05/17 14:55:53 by lgoras           ###   ########.fr       */
+/*   Updated: 2025/05/17 14:57:51 by lgoras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	exit_error(int nb_exit)
 	else if (nb_exit == 4)
 		ft_putstr_fd("\033[0;91m\033[1m🚫 Input file does not exist.\n\033[0m",
 			2);
-	else if(nb_exit == 5)
+	else if (nb_exit == 5)
 		ft_putstr_fd("\033[0;91m\033[1m⚠️  Environment is empty\n\033[0m", 2);
 	else
 		ft_putstr_fd("\033[0;93m\033[1m❗ Unknown error occurred.\n\033[0m", 2);

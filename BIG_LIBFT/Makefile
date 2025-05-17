@@ -10,7 +10,6 @@ AR			= ar rcs
 RM			= rm -f
 INCLUDES	= -Iincludes
 
-# Source files
 SRCS = \
 	srcs/libc/ft_atoi.c \
 	srcs/libc/ft_bzero.c \
@@ -55,39 +54,24 @@ SRCS = \
 	srcs/printf/srcs/ft_putnbr_unsigned.c \
 	srcs/printf/srcs/ft_putstr.c
 
-# Object files in obj/ with matching structure
 OBJS = $(SRCS:srcs/%.c=obj/%.o)
 
-# Default rule
 all: $(NAME)
 
-# Create lib
 $(NAME): $(OBJS)
 	@mkdir -p lib
 	@$(AR) $(NAME) $(OBJS)
-	@echo "\033[1;32m\n✅ Compiled and archived: $(NAME)\033[0m"
 
-BAR_LENGTH := 50
-UPDATE_BAR = $(shell echo -n "$(1)" | awk '{ printf("%-*s", '"$(BAR_LENGTH)"', $$1); }')
-
-
-# Compile to obj/ while preserving directory structure
 obj/%.o: srcs/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-	@echo -n "\r[\033[0;34m$(shell echo $(words $(OBJS)) | awk '{print int($$1*100/$(BAR_LENGTH))"%"}')\033[0m] Compiling..."
 
-# Clean object files
 clean:
 	@$(RM) $(OBJS)
-	@echo "\033[0;33m🧹 Cleaned object files\033[0m"
 
-# Clean all
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "\033[1;31m🧨 Removed $(NAME)\033[0m"
 
-# Recompile all
 re: fclean all
 
 .PHONY: all clean fclean re
